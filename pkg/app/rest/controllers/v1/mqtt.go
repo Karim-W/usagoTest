@@ -58,7 +58,7 @@ func (ctrl *MqttController) Csub(topic string) {
 	wg := sync.WaitGroup{}
 	wg.Add(1)
 	consumer, _ := chnl.RegisterConsumer(
-		"Notification",
+		topic,
 		"",
 		true,
 		false,

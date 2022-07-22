@@ -1,10 +1,9 @@
 package main
 
-import (
-	// _ "rabbitmqtest/docs"
-	"rabbitmqtest/pkg/app/rest"
-)
+import "rabbitmqtest/pkg/app"
+
+// _ "rabbitmqtest/docs"
 
 func main() {
-	rest.Start()
+	app.Start()
 }

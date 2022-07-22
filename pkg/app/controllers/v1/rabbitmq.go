@@ -3,7 +3,6 @@ package v1
 import (
 	"fmt"
 	"rabbitmqtest/pkg/domain"
-	"sync"
 
 	"github.com/BetaLixT/usago"
 	"go.uber.org/zap"
@@ -39,7 +38,7 @@ type MqttController struct {
 
 // }
 
-func (ctrl *MqttController) Csub(topic string) {
+func (ctrl *MqttController) Csub(topic string) string {
 
 	manager := usago.NewChannelManager("amqp://guest:guest@localhost:55005/", ctrl.logger)
 	bldr := usago.NewChannelBuilder().WithQueue(
@@ -53,10 +52,8 @@ func (ctrl *MqttController) Csub(topic string) {
 	chnl, err := manager.NewChannel(*bldr)
 	if err != nil {
 		fmt.Printf("failed to create channel")
-		return
+		return "FAIL"
 	}
-	wg := sync.WaitGroup{}
-	wg.Add(1)
 	consumer, _ := chnl.RegisterConsumer(
 		topic,
 		"",
@@ -68,7 +65,6 @@ func (ctrl *MqttController) Csub(topic string) {
 	)
 	fmt.Println("CONSUMER REGISTERED")
 	go func() {
-		defer wg.Done()
 		msg := <-consumer
 		fmt.Println("THIS IS THE MESSAGE", msg.Body)
 		ctrl.logger.Info(
@@ -76,7 +72,7 @@ func (ctrl *MqttController) Csub(topic string) {
 			zap.String("body", string(msg.RoutingKey)),
 		)
 	}()
-
+	return "SUCCESS"
 }
 
 // func (ctrl *MqttController) RegisterRoutes(grp *gin.RouterGroup) {

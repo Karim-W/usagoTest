@@ -1,7 +1,7 @@
-package rest
+package app
 
 import (
-	v1 "rabbitmqtest/pkg/app/rest/controllers/v1"
+	v1 "rabbitmqtest/pkg/app/controllers/v1"
 	"rabbitmqtest/pkg/domain"
 	"rabbitmqtest/pkg/infra/config"
 	"rabbitmqtest/pkg/infra/insights"
@@ -21,20 +21,21 @@ func Start() {
 		fx.Provide(serviceprovider.NewServiceProviderFactory),
 		fx.Provide(domain.NewMqttService),
 		fx.Provide(v1.NewMqttController),
-		fx.Invoke(startService),
+		fx.Invoke(StartService),
 	)
 	app.Run()
 
 	// Invoke cleanups
 }
 
-func startService(
+func StartService(
 	provFactory *serviceprovider.ServiceProviderFactory,
 	lgr *zap.Logger,
 	v1mcast *v1.MqttController,
 ) {
 
 	v1mcast.Csub("Notification")
+
 	// // - Setting up logger
 
 	// router := gin.New()

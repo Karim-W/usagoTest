@@ -7,10 +7,10 @@ import (
 	"go.uber.org/zap"
 )
 
-type MqttRepository struct {
+type RabbitMqRepository struct {
 }
 
-var _ domain.IMqttRepository = (*MqttRepository)(nil)
+var _ domain.IRabbitMqRepository = (*RabbitMqRepository)(nil)
 
 // func (repo *MqttRepository) Pub(logger *zap.Logger, topic string, chnl *usago.ChannelContext) {
 // 	// cnfrms, err := chnl.GetConfirmsChannel()
@@ -59,7 +59,7 @@ var _ domain.IMqttRepository = (*MqttRepository)(nil)
 
 // }
 
-func (repo *MqttRepository) Sub(logger *zap.Logger, topic string, chnl *usago.ChannelContext) {
+func (repo *RabbitMqRepository) Sub(logger *zap.Logger, topic string, chnl *usago.ChannelContext) {
 
 }
 
@@ -130,6 +130,6 @@ func Ptr[T any](v T) *T {
 	return &v
 }
 
-func NewMqttRepo() *MqttRepository {
-	return &MqttRepository{}
+func NewRabbitMqRepo() *RabbitMqRepository {
+	return &RabbitMqRepository{}
 }

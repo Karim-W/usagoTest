@@ -8,8 +8,8 @@ import (
 	"go.uber.org/zap"
 )
 
-type MqttController struct {
-	svc    *domain.MqttService
+type RabbitMqController struct {
+	svc    *domain.RabbitMqService
 	logger *zap.Logger
 	// channel *usago.ChannelContext
 }
@@ -38,7 +38,7 @@ type MqttController struct {
 
 // }
 
-func (ctrl *MqttController) Csub(topic string) string {
+func (ctrl *RabbitMqController) Csub(topic string) string {
 
 	manager := usago.NewChannelManager("amqp://guest:guest@localhost:55005/", ctrl.logger)
 	bldr := usago.NewChannelBuilder().WithQueue(
@@ -82,12 +82,12 @@ func (ctrl *MqttController) Csub(topic string) string {
 // func (ctrl *MqttController) LMAOO() {
 // }
 
-func NewMqttController(
-	svc *domain.MqttService,
+func NewRabbitMqController(
+	svc *domain.RabbitMqService,
 	l *zap.Logger,
-) *MqttController {
+) *RabbitMqController {
 
-	return &MqttController{
+	return &RabbitMqController{
 		svc:    svc,
 		logger: l,
 	}

@@ -5,6 +5,6 @@ import (
 	"go.uber.org/zap"
 )
 
-type IMqttRepository interface {
+type IRabbitMqRepository interface {
 	Sub(logger *zap.Logger, topic string, chnl *usago.ChannelContext)
 }

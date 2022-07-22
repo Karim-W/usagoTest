@@ -5,17 +5,17 @@ import (
 	"go.uber.org/zap"
 )
 
-type MqttService struct {
+type RabbitMqService struct {
 	logger *zap.Logger
 }
 
-func (svc *MqttService) SubSvc(prov IServiceProvider, topic string, channel *usago.ChannelContext) {
-	prov.GetMqttRepo().Sub(svc.logger, topic, channel)
+func (svc *RabbitMqService) SubSvc(prov IServiceProvider, topic string, channel *usago.ChannelContext) {
+	prov.GetRabbitMqRepo().Sub(svc.logger, topic, channel)
 	// prov.GetMqttRepo().PubSub(svc.logger)
 }
 
-func NewMqttService(logger *zap.Logger) *MqttService {
-	return &MqttService{
+func NewRabbitMqService(logger *zap.Logger) *RabbitMqService {
+	return &RabbitMqService{
 		logger: logger,
 	}
 

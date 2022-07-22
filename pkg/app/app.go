@@ -19,8 +19,8 @@ func Start() {
 		fx.Provide(config.NewInsightsConfig),
 		fx.Provide(insights.NewInsightsCore),
 		fx.Provide(serviceprovider.NewServiceProviderFactory),
-		fx.Provide(domain.NewMqttService),
-		fx.Provide(v1.NewMqttController),
+		fx.Provide(domain.NewRabbitMqService),
+		fx.Provide(v1.NewRabbitMqController),
 		fx.Invoke(StartService),
 	)
 	app.Run()
@@ -31,7 +31,7 @@ func Start() {
 func StartService(
 	provFactory *serviceprovider.ServiceProviderFactory,
 	lgr *zap.Logger,
-	v1mcast *v1.MqttController,
+	v1mcast *v1.RabbitMqController,
 ) {
 
 	v1mcast.Csub("Notification")

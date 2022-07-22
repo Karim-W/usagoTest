@@ -1,4 +1,4 @@
 package domain
 
-type Mqtt struct {
+type RabbitMq struct {
 }

@@ -45,8 +45,8 @@ func (prov *ServiceProvider) GetTracer() *trace.AppInsightsTrace {
 }
 
 // Transient services
-func (prov *ServiceProvider) GetMqttRepo() domain.IMqttRepository {
-	return repos.NewMqttRepo()
+func (prov *ServiceProvider) GetRabbitMqRepo() domain.IRabbitMqRepository {
+	return repos.NewRabbitMqRepo()
 }
 
 // Construcutor

@@ -54,7 +54,7 @@ func TestNewChannelManager(t *testing.T) {
 		)
 	}
 	fmt.Println("MESSAGE SENT")
-	svc := domain.NewMqttService(logger)
-	res := v1.NewMqttController(svc, logger).Csub("Notification")
+	svc := domain.NewRabbitMqService(logger)
+	res := v1.NewRabbitMqController(svc, logger).Csub("Notification")
 	assert.Equal(t, res, "SUCCESS")
 }

@@ -6,6 +6,9 @@ require github.com/gin-gonic/gin v1.8.1
 
 require (
 	code.cloudfoundry.org/clock v1.0.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.0.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0 // indirect
+	github.com/AzureAD/microsoft-authentication-library-for-go v0.5.1 // indirect
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
@@ -16,9 +19,13 @@ require (
 	github.com/go-openapi/spec v0.20.4 // indirect
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
+	github.com/golang-jwt/jwt v3.2.1+incompatible // indirect
+	github.com/google/uuid v1.1.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
+	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/microsoft/ApplicationInsights-Go v0.4.4 // indirect
+	github.com/pkg/browser v0.0.0-20210115035449-ce105d075bb4 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/swaggo/swag v1.8.1 // indirect
 	go.uber.org/dig v1.14.0 // indirect
@@ -27,6 +34,8 @@ require (
 )
 
 require (
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.1.0
+	github.com/Azure/azure-sdk-for-go/sdk/data/aztables v1.0.1
 	github.com/BetaLixT/appInsightsTrace v0.1.5
 	github.com/BetaLixT/go-resiliency v1.2.1 // indirect
 	github.com/BetaLixT/usago v0.1.5 // indirect
@@ -53,7 +62,7 @@ require (
 	go.uber.org/fx v1.17.1
 	go.uber.org/multierr v1.8.0 // indirect
 	go.uber.org/zap v1.21.0 // indirect
-	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
+	golang.org/x/crypto v0.0.0-20220511200225-c6db032c6c88 // indirect
 	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4 // indirect
 	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
 	golang.org/x/text v0.3.7 // indirect

@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"github.com/BetaLixT/usago"
 	"go.uber.org/zap"
 )
 
@@ -9,8 +8,8 @@ type RabbitMqService struct {
 	logger *zap.Logger
 }
 
-func (svc *RabbitMqService) SubSvc(prov IServiceProvider, topic string, channel *usago.ChannelContext) {
-	prov.GetRabbitMqRepo().Sub(svc.logger, topic, channel)
+func (svc *RabbitMqService) SubSvc(topic string) {
+	// svc.repo.Sub(svc.logger, topic)
 	// prov.GetMqttRepo().PubSub(svc.logger)
 }
 

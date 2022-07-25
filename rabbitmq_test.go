@@ -14,7 +14,7 @@ import (
 
 func TestNewChannelManager(t *testing.T) {
 	logger, _ := zap.NewProduction()
-	manager := usago.NewChannelManager("amqp://guest:guest@localhost:55005/", logger)
+	manager := usago.NewChannelManager("amqp://guest:guest@localhost:55001/", logger)
 	bldr := usago.NewChannelBuilder().WithQueue(
 		"Notification",
 		false,
@@ -30,7 +30,7 @@ func TestNewChannelManager(t *testing.T) {
 	}
 	// consume
 	fmt.Println("HELLOOO")
-	body := "HI"
+	body := "testmf"
 	_, err = chnl.Publish(
 		"",
 		"Notification",

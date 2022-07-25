@@ -3,11 +3,12 @@ package repos
 import (
 	"rabbitmqtest/pkg/domain"
 
-	"github.com/BetaLixT/usago"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
 	"go.uber.org/zap"
 )
 
 type RabbitMqRepository struct {
+	client *aztables.Client
 }
 
 var _ domain.IRabbitMqRepository = (*RabbitMqRepository)(nil)
@@ -59,7 +60,7 @@ var _ domain.IRabbitMqRepository = (*RabbitMqRepository)(nil)
 
 // }
 
-func (repo *RabbitMqRepository) Sub(logger *zap.Logger, topic string, chnl *usago.ChannelContext) {
+func (repo *RabbitMqRepository) Sub(logger *zap.Logger, topic string) {
 
 }
 

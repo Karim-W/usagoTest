@@ -19,6 +19,7 @@ func Start() {
 		fx.Provide(config.NewInsightsConfig),
 		fx.Provide(insights.NewInsightsCore),
 		fx.Provide(serviceprovider.NewServiceProviderFactory),
+		fx.Provide(domain.NewRabbitMqRepo),
 		fx.Provide(domain.NewRabbitMqService),
 		fx.Provide(v1.NewRabbitMqController),
 		fx.Invoke(StartService),

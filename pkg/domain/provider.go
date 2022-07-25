@@ -1,5 +1,5 @@
 package domain
 
 type IServiceProvider interface {
-	GetRabbitMqRepo() IRabbitMqRepository
+	// GetRabbitMqRepo() IRabbitMqRepository
 }

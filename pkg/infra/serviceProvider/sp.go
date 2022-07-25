@@ -2,7 +2,6 @@ package serviceprovider
 
 import (
 	"rabbitmqtest/pkg/domain"
-	"rabbitmqtest/pkg/infra/db/repos"
 
 	trace "github.com/BetaLixT/appInsightsTrace"
 	"github.com/betalixt/gingorr"
@@ -45,9 +44,10 @@ func (prov *ServiceProvider) GetTracer() *trace.AppInsightsTrace {
 }
 
 // Transient services
-func (prov *ServiceProvider) GetRabbitMqRepo() domain.IRabbitMqRepository {
-	return repos.NewRabbitMqRepo()
-}
+// func (prov *ServiceProvider) GetRabbitMqRepo() domain.IRabbitMqRepository {
+// 	client := config.GetClient()
+// 	return domain.NewRabbitMqRepo(client)
+// }
 
 // Construcutor
 func NewServiceProvider(

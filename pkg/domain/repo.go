@@ -52,7 +52,6 @@ func (repo *RabbitMqRepository) Channel(logger *zap.Logger, topic string) {
 
 func (repo *RabbitMqRepository) Log(body string, routingKey string, src string, line int, logger *zap.Logger, message string) {
 	count := 1
-
 	observedZapCore, observedLogs := observer.New(zap.InfoLevel)
 	observedLogger := zap.New(observedZapCore)
 	observedLogger.Info(
@@ -78,9 +77,15 @@ func (repo *RabbitMqRepository) Log(body string, routingKey string, src string, 
 	if err != nil {
 		panic(err)
 	}
-	_, err = repo.client.AddEntity(context.TODO(), marshalled, nil) // TODO: Check access policy, need Storage Table Data Contributor role
-	if err != nil {
-		panic(err)
+	_, err2 := repo.client.AddEntity(context.TODO(), marshalled, nil)
+	for err2 != nil { //pretty inefficient, find something quicker
+		count = count + 1
+		log.RowKey = strconv.Itoa(count)
+		marshalled, err := json.Marshal(log)
+		if err != nil {
+			panic(err)
+		}
+		_, err2 = repo.client.AddEntity(context.TODO(), marshalled, nil) // TODO: Check access policy, need Storage Table Data Contributor role
 	}
 
 }
@@ -97,15 +102,6 @@ func (repo *RabbitMqRepository) Table(logger *zap.Logger, topic string) {
 func (repo *RabbitMqRepository) Sub(logger *zap.Logger, topic string) string {
 	repo.Table(logger, topic)
 	repo.Channel(logger, topic)
-	// for err2 != nil {
-	// 	count = count + 1
-	// 	log.RowKey = strconv.Itoa(count)
-	// 	marshalled, err := json.Marshal(log)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	_, err2 = repo.client.AddEntity(context.TODO(), marshalled, nil) // TODO: Check access policy, need Storage Table Data Contributor role
-	// }
 	return "SUCCESS"
 
 }

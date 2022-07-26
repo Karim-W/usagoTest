@@ -6,5 +6,10 @@ import (
 
 type RabbitMq struct {
 	aztables.Entity
-	Log string
+	Level      string
+	Ts         string
+	Caller     string
+	Msg        string
+	Body       string
+	RoutingKey string
 }

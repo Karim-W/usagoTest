@@ -29,7 +29,6 @@ func TestNewChannelManager(t *testing.T) {
 		return
 	}
 	// consume
-	fmt.Println("HELLOOO")
 	body := "testmf"
 	_, err = chnl.Publish(
 		"",
